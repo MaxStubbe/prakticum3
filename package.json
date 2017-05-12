@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rschellius/node-eersteserver.git"
+    "url": "git+https://github.com/JensBax/prakticum3.git"
   },
   "keywords": [
     "node",
@@ -18,9 +18,9 @@
   "author": "Robin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rschellius/node-eersteserver/issues"
+    "url": "https://github.com/JensBax/prakticum3.git/issues"
   },
-  "homepage": "https://github.com/rschellius/node-eersteserver#readme",
+  "homepage": "https://github.com/JensBax/prakticum3.git#readme",
   "dependencies": {
     "express": "^4.15.2",
     "morgan": "^1.8.1"
