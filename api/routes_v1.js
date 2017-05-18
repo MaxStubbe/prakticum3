@@ -57,4 +57,78 @@ routes.get('/cities/:id', function(req, res){
     });
 });
 
+routes.post('/cities', function(req, res){
+
+    var city = req.body;
+    var query = {
+        sql: 'INSERT INTO `city`(city) VALUES (?)',
+        values: [ city.city ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(city);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
+routes.put('/cities/:id', function(req, res){
+
+    var city = req.body;
+    var cityId = req.params.id;
+    var query = {
+        sql: 'UPDATE `city` SET city=? WHERE city_id=?',
+        values: [ city.city, cityId ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(city);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
+routes.delete('/cities/:id', function(req, res){
+
+    var city = req.body;
+    var cityId = req.params.id;
+    var query = {
+        sql: 'DELETE FROM `city` WHERE city_id=?',
+        values: [ cityId ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(city);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
 module.exports = routes;
