@@ -23,7 +23,8 @@
   "homepage": "https://github.com/JensBax/prakticum3.git#readme",
   "dependencies": {
     "express": "^4.15.2",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
