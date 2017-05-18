@@ -23,13 +23,13 @@
   "homepage": "https://github.com/JensBax/prakticum3.git#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.2",
+    "express": "^4.15.3",
     "morgan": "^1.8.1",
     "mysql": "^2.13.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.3.0"
+    "mocha": "^3.4.1"
   }
 }

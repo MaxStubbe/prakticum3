@@ -131,4 +131,110 @@ routes.delete('/cities/:id', function(req, res){
     });
 });
 
+// countrys
+
+routes.get('/countries', function(req, res){
+    res.contentType('application/json');
+
+    db.query('SELECT * FROM country', function(error, rows, fields){
+        if (error){
+            res.status(400).json(error);
+        }else{
+            res.status(200).json(rows);
+        };
+
+    });
+});
+
+routes.get('/countries/:id', function(req, res){
+
+    var cityId = req.params.id;
+
+    res.contentType('application/json');
+
+    db.query('SELECT * FROM country WHERE country_id =?', [ cityId ],
+        function(error, rows, fields){
+            if (error){
+                res.status(400).json(error);
+            }else{
+                res.status(200).json(rows);
+            };
+
+        });
+});
+
+routes.post('/countries', function(req, res){
+
+    var country = req.body;
+    var query = {
+        sql: 'INSERT INTO `counrty`(country) VALUES (?)',
+        values: [ country.country ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(country);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
+routes.put('/countries/:id', function(req, res){
+
+    var country = req.body;
+    var countryId = req.params.id;
+    var query = {
+        sql: 'UPDATE `country` SET country=? WHERE country_id=?',
+        values: [ country.country, countryId ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(country);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
+routes.delete('/countries/:id', function(req, res){
+
+    var country = req.body;
+    var countryId = req.params.id;
+    var query = {
+        sql: 'DELETE FROM `country` WHERE country_id=?',
+        values: [ countryId ],
+        timeout: 2000 //2sec
+    };
+
+    console.dir(country);
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    db.query(query, function(error, rows, fields){
+        if (error){
+            res.status(400);
+            res.json(error);
+        }else{
+            res.status(200);
+            res.json(rows);
+        };
+    });
+});
+
 module.exports = routes;
